@@ -18,7 +18,7 @@ type multiprotocol struct {
 func NewMultiprotocol(s string) (p Multiprotocol, err error) {
 	defer func() {
 		if e := recover(); e != nil {
-			log.Printf("Panic in NewMultiaddr on input %q: %s", s, e)
+			log.Printf("Panic in NewMultiProtocol on input %q: %s", s, e)
 			err = fmt.Errorf("%v", e)
 		}
 	}()

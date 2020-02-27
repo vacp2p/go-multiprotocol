@@ -17,21 +17,21 @@ func stringToBytes(s string) ([]byte, error) {
 	sp := strings.Split(s, "/")
 
 	if sp[0] != "" {
-		return nil, fmt.Errorf("failed to parse multiaddr %q: must begin with /", s)
+		return nil, fmt.Errorf("failed to parse multiprotocol %q: must begin with /", s)
 	}
 
 	// consume first empty elem
 	sp = sp[1:]
 
 	if len(sp) == 0 {
-		return nil, fmt.Errorf("failed to parse multiaddr %q: empty multiaddr", s)
+		return nil, fmt.Errorf("failed to parse multiprotocol %q: empty multiprotocol", s)
 	}
 
 	for len(sp) > 0 {
 		name := sp[0]
 		p := ProtocolWithName(name)
 		if p.Code == 0 {
-			return nil, fmt.Errorf("failed to parse multiaddr %q: unknown protocol %s", s, sp[0])
+			return nil, fmt.Errorf("failed to parse multiprotocol %q: unknown protocol %s", s, sp[0])
 		}
 		_, _ = b.Write(p.VCode)
 		sp = sp[1:]

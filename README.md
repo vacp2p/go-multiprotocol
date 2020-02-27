@@ -5,7 +5,11 @@ A lot of this code has been adapted from [multiaddr](https://github.com/multifor
 Multiprotocol can be initialized using a CSV file, for the CSV format see the [specification](https://github.com/vacp2p/multiprotocol).
 
 ```go
-err := Init("testdata/multiprotocol.csv")
+package main
+
+import mp "github.com/vacp2p/go-multiprotocol"
+
+err := mp.Init("testdata/multiprotocol.csv")
 if err != nil {
     print(err)
 }

@@ -42,7 +42,7 @@ type Protocol struct {
 var protocolsByName = map[string]Protocol{}
 var protocolsByCode = map[int]Protocol{}
 
-// Protocols is the list of multiaddr protocols supported by this module.
+// Protocols is the list of multiprotocol protocols supported by this module.
 var Protocols = []Protocol{}
 
 func AddProtocol(p Protocol) error {

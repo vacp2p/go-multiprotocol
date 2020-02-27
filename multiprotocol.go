@@ -137,7 +137,7 @@ func (m *multiprotocol) Protocols() []Protocol {
 	return ps
 }
 
-var ErrProtocolNotFound = fmt.Errorf("protocol not found in multiaddr")
+var ErrProtocolNotFound = fmt.Errorf("protocol not found in multiprotocol")
 
 func (m *multiprotocol) ValueForProtocol(code int) (value string, err error) {
 	err = ErrProtocolNotFound

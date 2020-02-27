@@ -7,7 +7,6 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/multiformats/go-multiaddr"
 	"github.com/multiformats/go-varint"
 )
 
@@ -79,7 +78,7 @@ func (c *Component) Protocols() []Protocol {
 
 func (c *Component) ValueForProtocol(code int) (string, error) {
 	if c.protocol.Code != code {
-		return "", multiaddr.ErrProtocolNotFound
+		return "", ErrProtocolNotFound
 	}
 	return c.Value(), nil
 }
@@ -110,7 +109,7 @@ func (c *Component) String() string {
 	return b.String()
 }
 
-// writeTo is an efficient, private function for string-formatting a multiaddr.
+// writeTo is an efficient, private function for string-formatting a multiprotocol.
 // Trust me, we tend to allocate a lot when doing this.
 func (c *Component) writeTo(b *strings.Builder) {
 	b.WriteByte('/')
@@ -123,7 +122,7 @@ func (c *Component) writeTo(b *strings.Builder) {
 	b.WriteString(value)
 }
 
-// NewComponent constructs a new multiaddr component
+// NewComponent constructs a new multiprotocol component
 func NewComponent(protocol, value string) (*Component, error) {
 	p := ProtocolWithName(protocol)
 	if p.Code == 0 {

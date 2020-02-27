@@ -1,17 +1,34 @@
-package multiprotocol
+package multiprotocol_test
 
 import (
+	"fmt"
+	"os"
 	"testing"
+
+	"github.com/vacp2p/go-multiprotocol"
 )
 
-func TestInit(t *testing.T) {
+func TestMain(m *testing.M) {
+	multiprotocol.Init("testdata/multiprotocol.csv")
+	os.Exit(m.Run())
+}
 
-	err := Init("testdata/multiprotocol.csv")
+func TestMultiprotocol_ValueForProtocol(t *testing.T) {
+	expected := "2"
+
+	mp, err := multiprotocol.NewMultiprotocol(fmt.Sprintf("/vac/waku/%s", expected))
 	if err != nil {
-		t.Errorf("unexpected failure: %s", err.Error())
+		t.Errorf("failed to create multiprotocol: %s", err.Error())
 	}
 
-	if len(Protocols) != 4 {
-		t.Errorf("unexpected amount of protocols parsed. expected: 4 got: %d", len(Protocols))
+	protocol := multiprotocol.ProtocolWithName("waku")
+
+	val, err := mp.ValueForProtocol(protocol.Code)
+	if err != nil {
+		t.Errorf("failed to get value %s", err.Error())
+	}
+
+	if val != expected {
+		t.Errorf("did not match expected: %s actual: %s", expected, val)
 	}
 }

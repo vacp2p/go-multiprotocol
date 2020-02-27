@@ -119,6 +119,10 @@ func (c *Component) writeTo(b *strings.Builder) {
 		return
 	}
 
+	if value[0] != '/' {
+		b.WriteByte('/')
+	}
+
 	b.WriteString(value)
 }
 

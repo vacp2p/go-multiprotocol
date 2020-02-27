@@ -32,3 +32,14 @@ func TestMultiprotocol_ValueForProtocol(t *testing.T) {
 		t.Errorf("did not match expected: %s actual: %s", expected, val)
 	}
 }
+
+func TestMultiprotocol_StringReturnsExpected(t *testing.T) {
+	str := "/vac/waku/2/store/2/relay/2"
+
+	mp, _ := multiprotocol.NewMultiprotocol(str)
+	m, _ := multiprotocol.NewMultiprotocolBytes(mp.Bytes())
+
+	if str != m.String() {
+		t.Errorf("strings did not match expected: %s actual %s", str, m.String())
+	}
+}

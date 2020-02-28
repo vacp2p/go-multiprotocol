@@ -9,7 +9,7 @@ import (
 )
 
 func TestMain(m *testing.M) {
-	multiprotocol.Init("testdata/multiprotocol.csv")
+	_ = multiprotocol.Init("testdata/multiprotocol.csv")
 	os.Exit(m.Run())
 }
 

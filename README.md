@@ -20,6 +20,12 @@ import mp "github.com/vacp2p/go-multiprotocol"
 err := mp.Init("testdata/multiprotocol.csv")
 if err != nil {
     print(err)
+    return
+}
+
+mp, err := mp.NewMultiprotocol("/vac/waku/2/store/2/relay/2")
+if err != nil {
+    print(err)
 }
 ```
 

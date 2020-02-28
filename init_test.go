@@ -6,6 +6,11 @@ import (
 
 func TestInit(t *testing.T) {
 
+	// empty
+	Protocols = make([]Protocol, 0)
+	protocolsByCode = make(map[int]Protocol)
+	protocolsByName = make(map[string]Protocol)
+
 	err := Init("testdata/multiprotocol.csv")
 	if err != nil {
 		t.Errorf("unexpected failure: %s", err.Error())

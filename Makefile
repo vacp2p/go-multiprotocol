@@ -18,7 +18,6 @@ install-linter:
 vendor:
 	go mod tidy
 	go mod vendor
-	modvendor -copy="**/*.c **/*.h" -v
 .PHONY: vendor
 
 generate:

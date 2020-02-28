@@ -3,8 +3,6 @@ notifications:
 
 language: go
 
-install: true
-
 branches:
   only:
     - master
@@ -16,6 +14,9 @@ before_install:
         echo "Only docs were updated, not running the CI."
         exit 0
       fi
+
+install: make vendor
+
 env:
 - GO111MODULE=on
 

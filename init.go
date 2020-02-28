@@ -10,7 +10,7 @@ import (
 	"github.com/multiformats/go-multiaddr"
 )
 
-/// Init initializes multiprotocol with a CSV file
+// Init initializes multiprotocol with a CSV file
 func Init(path string) error {
 
 	file, err := os.Open(path)

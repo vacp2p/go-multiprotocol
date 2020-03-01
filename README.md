@@ -18,15 +18,10 @@ package main
 import mp "github.com/vacp2p/go-multiprotocol"
 
 err := mp.Init("testdata/multiprotocol.csv")
-if err != nil {
-    print(err)
-    return
-}
+// err non-nil when parsing failed.
 
 mp, err := mp.NewMultiprotocol("/vac/waku/2/store/2/relay/2")
-if err != nil {
-    print(err)
-}
+// err non-nil when parsing failed.
 ```
 
 Protocols can also be added programatically using the ```AddProtocol``` function.
